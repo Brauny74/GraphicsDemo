@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     float xRotation;
     float yVelocity;
 
+    public bool IsActive
+    {
+        get; set;
+    }
+
     bool isCrouched;
     bool isSprinting;
     Vector3 moveInputVector;
@@ -38,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        IsActive = true;
+
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
 
@@ -54,15 +61,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMouseLook();
-        HandleSprint();
-        HandleCrouch();
-        HandleGravityAndJump();
-        HandleMovement();
-    }
-
-    private void OnEnable()
-    {
+        if (IsActive)
+        {
+            HandleMouseLook();
+            HandleSprint();
+            HandleCrouch();
+            HandleGravityAndJump();
+            HandleMovement();
+        }
     }
 
     void HandleGravityAndJump()
@@ -116,27 +122,34 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext inputContext)
     {
-        moveInputVector = inputContext.ReadValue<Vector2>();
+        if(IsActive)
+            moveInputVector = inputContext.ReadValue<Vector2>();
     }
 
     public void OnCrouch(InputAction.CallbackContext inputContext)
     {
-        isCrouched = inputContext.ReadValueAsButton();
+        if(IsActive)
+            isCrouched = inputContext.ReadValueAsButton();
     }
 
     public void OnSprint(InputAction.CallbackContext inputContext)
     {
-        isSprinting = inputContext.ReadValueAsButton();
+        if(IsActive)
+            isSprinting = inputContext.ReadValueAsButton();
     }
 
     public void OnJump(InputAction.CallbackContext inputContext)
     {
-        if(inputContext.ReadValueAsButton() && controller.isGrounded)
-            yVelocity = Mathf.Sqrt(jumpForce * -2f * gravity);
+        if (IsActive)
+        {
+            if (inputContext.ReadValueAsButton() && controller.isGrounded)
+                yVelocity = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
     }
 
     public void OnLook(InputAction.CallbackContext inputContext)
     {
-        lookVector = inputContext.ReadValue<Vector2>();
+        if(IsActive)
+            lookVector = inputContext.ReadValue<Vector2>();
     }
 }

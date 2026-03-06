@@ -37,7 +37,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "bab18d9f-7453-463f-9d55-3e518e835fe1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -46,6 +46,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "5e1216d9-140c-4795-b63f-a75826ace7a8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Use",
+                    "type": "Button",
+                    "id": "6c448166-29e8-4a7a-802f-1651b0b3875a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -149,6 +158,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56f7a01e-8713-4468-9720-793586935f5b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "717a7462-f740-4aad-81db-6e5912d9c5c5",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
