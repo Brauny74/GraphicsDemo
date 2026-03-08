@@ -8,6 +8,16 @@ public class SceneLoadManager : PersistentSingleton<SceneLoadManager>
 
     public void LoadScene()
     {
-        var oper = SceneManager.LoadSceneAsync(GameSceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(LoadSceneName, LoadSceneMode.Single);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == LoadSceneName)
+        {
+            var op = SceneManager.LoadSceneAsync(GameSceneName, LoadSceneMode.Single);
+            SceneLoader.Instance.Initialize(op);
+        }
     }
 }

@@ -152,4 +152,18 @@ public class PlayerController : MonoBehaviour
         if(IsActive)
             lookVector = inputContext.ReadValue<Vector2>();
     }
+
+    public void OnPause()
+    {
+        if (PauseMenu.Instance.IsOpened)
+        {
+            PauseMenu.Instance.Close();
+            IsActive = true;
+        }
+        else
+        {
+            PauseMenu.Instance.Open();
+            IsActive = false;
+        }
+    }
 }
