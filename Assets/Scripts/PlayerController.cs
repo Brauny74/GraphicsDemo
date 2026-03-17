@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
 
     PlayerInput playerInput;
 
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Start()
     {
         IsActive = true;
@@ -54,9 +60,6 @@ public class PlayerController : MonoBehaviour
         currentSpeed = moveSpeed;
 
         isCrouched = false;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()
